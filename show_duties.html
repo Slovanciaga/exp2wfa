@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Duties</title>
+</head>
+<body>
+    <h1>Show Duties</h1>
+    <form action="/show_duties" method="POST">
+        <label for="duty_date">Enter Date (MM/DD/YYYY):</label>
+        <input type="text" id="duty_date" name="duty_date">
+        <input type="submit" value="Show Duties">
+    </form>
+    
+    {% if duties %}
+        <h2>Duties for {{ duty_date }}</h2>
+        <table border="1">
+            <tr>
+                <th>Employee</th>
+                <th>Duty</th>
+            </tr>
+            {% for emp, duty in duties.items() %}
+            <tr>
+                <td>{{ emp }}</td>
+                <td>{{ duty }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    
+    <a href="/">Back</a>
+</body>
+</html>
